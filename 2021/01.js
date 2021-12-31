@@ -1,23 +1,20 @@
-const fs = require('fs');
-const path = require('path');
+const { readInputFile } = require('./utils/readInputFile');
 
 /**
  * --- Day 1: Sonar Sweep ---
  */
 
-// (async () => {
-//   const depths = await fs.promises
-//     .readFile(path.resolve(__dirname, './01-input.txt'), 'utf8')
-//     .then((result) => result.split('\n').map(Number));
+(async () => {
+  const depths = await readInputFile('01').then((result) => result.split('\n').map(Number));
 
-//   let increases = 0;
-//   for (let i = 1; i < depths.length; i++) {
-//     if (depths[i] > depths[i - 1]) {
-//       increases++;
-//     }
-//   }
-//   console.log('Number of increases:', increases);
-// })();
+  let increases = 0;
+  for (let i = 1; i < depths.length; i++) {
+    if (depths[i] > depths[i - 1]) {
+      increases++;
+    }
+  }
+  console.log('Number of increases:', increases);
+})();
 
 /**
  * --- Part Two ---
@@ -32,9 +29,7 @@ const sumInRange = (depths, start, end) => {
 };
 
 (async () => {
-  const depths = await fs.promises
-    .readFile(path.resolve(__dirname, './01-input.txt'), 'utf8')
-    .then((result) => result.split('\n').map(Number));
+  const depths = await readInputFile('01').then((result) => result.split('\n').map(Number));
 
   let increases = 0;
   let windowStart = 0;
